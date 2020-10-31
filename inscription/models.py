@@ -41,7 +41,7 @@ class Cour(models.Model):
 class Examen(models.Model):
 	nom = models.CharField(max_length=50)
 	notes = models.PositiveIntegerField(default=0)
-	cours = models.OneToOneField(Cours,on_delete=models.CASCADE)!
+	cours = models.OneToOneField(Cours,on_delete=models.CASCADE)
 	categorie = models.OneToOneField(Categorie,on_delete=models.CASCADE)
 
 
