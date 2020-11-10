@@ -32,3 +32,26 @@ class ExamenSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Examen
 		fields = "__all__"
+
+class AnneAcademiqueSerializer(serializers.ModelSerializer):
+
+	class Meta:
+		model = AnneAcademique
+		fields = "__all__"
+
+class CampusSerializer(serializers.ModelSerializer):
+
+	class Meta:
+		model = Campus
+		fields = "__all__"
+
+class FaculteSerializer(serializers.ModelSerializer):
+	class Meta:
+		model= Faculte
+		fields = "__all__"
+
+
+class NiveauSerializer(serializers.ModelSerializer):
+	class Meta:
+		model= Niveau
+		fields = "__all__"
