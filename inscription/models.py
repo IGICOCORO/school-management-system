@@ -7,9 +7,9 @@ import time
 class Etudiant(models.Model):
 	user = models.OneToOneField(User, on_delete= models.CASCADE)
 	matricule = models.CharField(max_length=50)
-	classe = models.OneToOneField(Classe, on_delete=models.CASCADE)
-	faculte = models.ForeignKey(Faculte,on_delete=models.CASCADE)
-	niveau = models.OneToOneField(Niveau,on_delete=models.CASCADE)
+	classe = models.OneToOneField('Classe', on_delete=models.CASCADE)
+	faculte = models.ForeignKey('Faculte',on_delete=models.CASCADE)
+	niveau = models.OneToOneField('Niveau',on_delete=models.CASCADE)
 
 	def __str__(self):
 		return f"{self.user.first_name} {self.user.last_name}"
