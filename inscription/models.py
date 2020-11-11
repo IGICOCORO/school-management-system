@@ -7,18 +7,18 @@ import time
 class Etudiant(models.Model):
 	user = models.OneToOneField(User, on_delete= models.CASCADE)
 	matricule = models.CharField(max_length=50)
-	classe = models.OneToOneField(Classe, on_delete=models.CASCADE)
-	faculte = models.ForeignKey(Faculte,on_delete=models.CASCADE)
-	niveau = models.OneToOneField(Niveau,on_delete=models.CASCADE)
+	classe = models.OneToOneField('Classe', on_delete=models.CASCADE)
+	faculte = models.ForeignKey('Faculte',on_delete=models.CASCADE)
+	niveau = models.OneToOneField('Niveau',on_delete=models.CASCADE)
 
 	def __str__(self):
 		return f"{self.user.first_name} {self.user.last_name}"
 
 
 class Classe(models.Model):
-    niveau = models.ForeignKey(Niveau,on_delete=models.CASCADE ,null=False, blank=False)
-    faculte = models.ForeignKey(Faculte,on_delete=models.CASCADE, null=False, blank=False)
-    a_a = models.ForeignKey(AnneAcademique,on_delete=models.CASCADE, null=False, blank=False)
+    niveau = models.ForeignKey('Niveau',on_delete=models.CASCADE )
+    faculte = models.ForeignKey('Faculte',on_delete=models.CASCADE)
+    a_a = models.ForeignKey('AnneAcademique',on_delete=models.CASCADE)
     fin_inscription = models.DateField(null=False, blank=False)
     cloturee = models.BooleanField(null=False, default=False)
 
@@ -45,14 +45,14 @@ class Categorie(models.Model):
 class Cours(models.Model):
     nom = models.CharField(max_length=20, unique=True)
     v_h = models.IntegerField(null=True)
-    classe = models.ForeignKey(Classe, null=False)
-    Enseignant = models.ForeignKey(User, null=False)
+    classe = models.ForeignKey('Classe', on_delete=models.CASCADE)
+    Enseignant = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
     	return f"{self.nom}"
 
 class AnneAcademique(models.Model):
-    nom = fields.CharField(max_length=50, null=True)
+    nom = models.CharField(max_length=50, null=True)
 
     def __str__(self):
     	return nom
@@ -64,7 +64,7 @@ class Examen(models.Model):
 	cours = models.OneToOneField(Cours,on_delete=models.CASCADE)
 	categorie = models.OneToOneField(Categorie,on_delete=models.CASCADE)
 	date = models.DateTimeField(auto_now_add=True)
-	faculte = models.ForeignKey(Faculte,on_delete=models.CASCADE)
+	faculte = models.ForeignKey('Faculte',on_delete=models.CASCADE)
 
 
 	def __str__(self):
@@ -79,7 +79,7 @@ class Niveau(models.Model):
 
 
 class Faculte(models.Model):
-	nom = fields.CharField(max_length=50, null=True)
+	nom = models.CharField(max_length=50, null=True)
 	niveau = models.OneToOneField(Niveau,on_delete=models.CASCADE)
 	a_a = models.ForeignKey(AnneAcademique,on_delete=models.CASCADE)
 

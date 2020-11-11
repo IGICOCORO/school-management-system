@@ -87,3 +87,29 @@ class ExamenViewset(viewsets.ModelViewSet):
 	permission_classes = [IsAuthenticated]
 	queryset =Examen.objects.all()
 	serializer_class = ExamenSerializer
+
+class AnneAcademiqueViewset(viewsets.ModelViewSet):
+    authentication_classes = [SessionAuthentication, JWTAuthentication]
+    permission_classes = [IsAuthenticated]
+    queryset =AnneAcademique.objects.all()
+    serializer_class = AnneAcademiqueSerializer
+
+
+class CampusViewset(viewsets.ModelViewSet):
+    authentication_classes = [SessionAuthentication, JWTAuthentication]
+    permission_classes = [IsAuthenticated]
+    queryset =Campus.objects.all()
+    serializer_class = CampusSerializer
+
+
+class FaculteViewset(viewsets.ModelViewSet):
+    authentication_classes = [SessionAuthentication, JWTAuthentication]
+    permission_classes = [IsAuthenticated]
+    queryset =Faculte.objects.all()
+    serializer_class = FaculteSerializer
+
+class NiveauViewset(viewsets.ModelViewSet):
+    authentication_classes = [SessionAuthentication, JWTAuthentication]
+    permission_classes = [IsAuthenticated]
+    queryset =Niveau.objects.all()
+    serializer_class = NiveauSerializer

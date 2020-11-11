@@ -12,9 +12,9 @@ class ClasseAdmin(admin.ModelAdmin):
 	ordering =  "niveau","faculte","a_a","fin_inscription","cloturee"
 
 class CoursAdmin(admin.ModelAdmin):
-	list_display = "nom", "v_h","classe","enseignant"
-	list_filter = "nom", "v_h","classe","enseignant"
-	ordering = "nom", "v_h","classe","enseignant"
+	list_display = "nom", "v_h","classe"
+	list_filter = "nom", "v_h","classe"
+	ordering = "nom", "v_h","classe"
 
 class ExamenAdmin(admin.ModelAdmin):
 	list_display = "nom", "notes", "cours","categorie","date","faculte"
