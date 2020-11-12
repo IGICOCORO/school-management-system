@@ -17,5 +17,6 @@ router.register("niveau", NiveauViewset)
 
 
 urlpatterns = [
-	path("", include(router.urls)),
+	path("api/", include(router.urls)),
+	path("", login),
 ]
